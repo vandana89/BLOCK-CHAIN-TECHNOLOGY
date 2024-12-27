@@ -1,0 +1,1 @@
+{'index': 2, 'timestamp': 1720183159.5619278, 'transactions': [{'sender': 'Shiva Batthala', 'recipient': 'peoples.charity@gmail.com', 'amount': '50000'}], 'proof': 1, 'previous_hash': '78c9a6bceb8ce890882d6cec3ecc6f2948f40df16afeaca0f97966aaf256248c'}
