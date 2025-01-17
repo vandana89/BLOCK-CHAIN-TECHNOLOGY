@@ -28,8 +28,10 @@ CREATE TABLE `charityinformation` (
   `Charityaddress` varchar(200) DEFAULT NULL,
   `Charitycontact` varchar(200) DEFAULT NULL,
   `status` varchar(200) DEFAULT NULL,
+  `previous_hash` varchar(200) DEFAULT NULL,
+  `present_hash` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`Slno`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `charityinformation` */
 
@@ -88,8 +90,10 @@ CREATE TABLE `userinformation` (
   `contact` varchar(200) DEFAULT NULL,
   `address` varchar(200) DEFAULT NULL,
   `Status` varchar(200) DEFAULT NULL,
+  `previous_hash` varchar(200) DEFAULT NULL,
+  `present_hash` varchar(200) DEFAULT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8mb4;
 
 /*Data for the table `userinformation` */
 

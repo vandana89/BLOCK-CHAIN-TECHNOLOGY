@@ -1,0 +1,174 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> Charity | Teamplate</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/slicknav.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/flaticon.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/progressbar_barfiller.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/gijgo.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/animate.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/animated-headline.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/magnific-popup.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/themify-icons.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/slick.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/nice-select.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/style.css')}}">
+</head>
+
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 300px;
+            text-align: center;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .progress {
+            background: #ff7f3f;
+            color: #fff;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 50%;
+            font-weight: bold;
+            margin: -25px 0 10px;
+        }
+
+        .title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .stats {
+            color: #666;
+            margin: 10px 0;
+        }
+
+        .description {
+            font-size: 0.9em;
+            color: #888;
+            margin: 10px 0 20px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+        }
+
+
+        .donate-btn:hover {
+            background:#3fff85;
+        }
+
+        .donators {
+            color: #3fff85;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+    </style>
+    <header>
+        <!-- Header Start -->
+        <div class="header-area">
+            <div class="main-header ">
+                <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <!-- Logo -->
+                            <div class="col-xl-2 col-lg-2">
+                                <div class="logo">
+                                    <img src="{{url_for('static',filename='assets/img/logo/logo.png')}}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-xl-10 col-lg-10">
+                                <div class="menu-wrapper  d-flex align-items-center justify-content-end">
+                                    <!-- Main-menu -->
+                                    <div class="main-menu d-none d-lg-block">
+                                        <nav>
+                                            <ul id="navigation">
+                                                <li><a href="{{url_for('charity_post_upload',chaname=chaname)}}">Event
+                                                        Upload</a></li>
+                                                <li><a href="{{url_for('charity_event',chaname=chaname)}}">Events</a>
+                                                </li>
+                                                <li><a href="{{url_for('charityhome',chaname=chaname)}}">Go Back</a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Mobile Menu -->
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+    <!-- header end -->
+    <main>
+        <div class="container col-lg-7">
+            <div class="section-tittle text-center mb-80">
+                <h2>Charity Event</h2>
+            </div>
+            
+            <div class="container">
+                {% for i in rows %}
+                <div class="card">
+                    <img src="{{url_for('static',filename='uploads/' ~ i[4])}}" alt="{{ i[2] }}">
+                    <div class="card-content">
+                        <div class="title">{{ i[2] }}</div>
+                        <p class="description">{{ i[3] }}</p>
+                    
+                    </div>
+                </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>

@@ -46,8 +46,11 @@
                                     <div class="main-menu d-none d-lg-block">
                                         <nav>
                                             <ul id="navigation">
-                                                <li><a href="{{url_for('donationrequest')}}">View Requests</a></li>
-                                                <li><a href="{{url_for('viewdonations')}}">View Donations</a></li>
+                                                <li><a href="{{url_for('charityhome',chaname=chaname)}}">Home</a></li>
+                                                <li><a href="{{url_for('charity_profile',chaname=chaname)}}">Profile</a></li>
+                                                <li><a href="{{url_for('donationrequest',chaname=chaname)}}">View Requests</a></li>
+                                                <li><a href="{{url_for('viewdonations',chaname=chaname)}}">All Charity Transaction</a></li>
+                                                <li><a href="{{url_for('singledonations',chaname=chaname)}}">single Charity Transaction</a></li>
                                                 <li><a href="{{url_for('charitylogout')}}">Logout</a></li>
                                             </ul>
                                         </nav>
@@ -80,7 +83,7 @@
                         <h2 class="contact-title">Charity Accout Page . . . . !</h2>
                     </div>
                     <div class="col-lg-8">
-                        <form class="form-contact contact_form" action="{{url_for('charitybanking')}}" method="post" id="contactForm" novalidate="novalidate">
+                        <form class="form-contact contact_form" action="{{url_for('charitybanking',c=c,chaname=chaname)}}" method="post" id="contactForm" novalidate="novalidate">
                             <div class="row">
                                 <div class="input-group mb-3">
                                     <input type="number" class="form-control" name="accountnumber" style="text-align:center;" placeholder="Enter Charity Account Number" >

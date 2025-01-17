@@ -31,7 +31,6 @@
         <!-- Header Start -->
         <div class="header-area">
             <div class="main-header ">
-
                 <div class="header-bottom  header-sticky">
                     <div class="container-fluid">
                         <div class="row align-items-center">
@@ -47,17 +46,17 @@
                                     <div class="main-menu d-none d-lg-block">
                                         <nav>
                                             <ul id="navigation">
-                                                <li><a href="{{url_for('userhome',usaname=usaname)}}">Home</a></li>
-                                                <li><a href="{{url_for('userprofile',usaname=usaname)}}">Profile</a></li>
-                                                <li><a href="{{url_for('viewcharities',usaname=usaname)}}">View Charities</a></li>
-                                                <li><a href="{{url_for('charityresponse',usaname=usaname)}}">Charity Response</a></li>
-                                                <li><a href="{{url_for('item_list',usaname=usaname)}}">Item Status</a></li>
-                                                <li><a href="{{url_for('user_transactiondetails',usaname=usaname)}}">Transaction Details</a></li>
-                                                <li><a href="{{url_for('userlogout')}}">Logout</a></li>
+                                                <li><a href="{{url_for('charity_post_upload',chaname=chaname)}}">Event Upload</a></li>
+                                                <li><a href="{{url_for('charity_event',chaname=chaname)}}">Events</a></li>
+                                                <li><a href="{{url_for('charityhome',chaname=chaname)}}">Go Back</a></li>
                                             </ul>
                                         </nav>
                                     </div>
                                 </div>
+                            </div>
+                            <!-- Mobile Menu -->
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
                             </div>
                         </div>
                     </div>
@@ -68,46 +67,48 @@
     </header>
     <!-- header end -->
     <main>
+            <div class="container">
+                <center>
+                    {% with messages = get_flashed_messages(with_categories=true) %}
+                    {% if messages %}
+                    <ul class=flashes>
+                    {% for category ,message in messages %}
+                        <li class="{{category}}">{{message}}</li>
+                    {% endfor %}
+                    </ul>
+                    {% endif %}
+                    {% endwith %}
 
-
-    <section class="home-blog-area section-padding30" style="padding-top: 240px;padding-bottom: 0px;">
-        <div class="container">
-            <!-- Section Tittle -->
-            <div class="row justify-content-center">
-                <div class="col-xl-5 col-lg-6 col-md-9 col-sm-10">
-                    <div class="section-tittle text-center mb-90">
-
-                        <h2>Welcome to Charity Application <br>{{ usaname }}</h2>
-
+                    <div class="section-tittle text-center mb-80">
+                        <h2>Charity Event Post </h2>
                     </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-xl-6 col-lg-6 col-md-6">
-                    <div class="home-blog-single mb-30">
+                    <div class="col-lg-8">
+                        <form class="form-contact contact_form"  enctype="multipart/form-data" action="{{url_for('post_upload',chaname=chaname)}}" method="post" id="contactForm" novalidate="novalidate">
+                            <div class="row">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" name="charity_name" style="text-align:center;" value="{{ chaname }}" readonly/>
+                                </div>
 
+                               <div class="input-group mb-3">
+                                   <input type="text" class="form-control" name="event_name" style="text-align:center;"  placeholder="Enter Event Name">
+                               </div>
+                               <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="event_description" style="text-align:center;"  placeholder="Enter Event Description">
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <input name="event_img" type="file" aria-describedby="emailHelp" required/>
+                              </div>
+                              <div class="mb-3">
+                               <br>
+                              </div>
+                            <div class="form-group mt-3">
+                                <button type="submit" class="btn btn-primary">submit</button>
+                            </div>
+                        </form>
                     </div>
-                </div>
-
-            </div>
-        </div>
-    </section>
-    <!-- Blog Area End -->
-    <!--? Count Down Start -->
-    <div class="count-down-area pt-25 section-bg" data-background="assets/img/gallery/section_bg02.png">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-lg-12 col-md-12">
-                    <div class="count-down-wrapper" >
-                        <div class="row justify-content-between">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Count Down End -->
+                    </center>
+            </div>  
     </main>
-
-    </body>
+</body>
 </html>

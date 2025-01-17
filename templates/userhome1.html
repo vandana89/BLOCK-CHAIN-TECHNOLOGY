@@ -47,12 +47,10 @@
                                     <div class="main-menu d-none d-lg-block">
                                         <nav>
                                             <ul id="navigation">
-                                                <li><a href="{{url_for('userhome',usaname=usaname)}}">Home</a></li>
-                                                <li><a href="{{url_for('userprofile',usaname=usaname)}}">Profile</a></li>
-                                                <li><a href="{{url_for('viewcharities',usaname=usaname)}}">View Charities</a></li>
-                                                <li><a href="{{url_for('charityresponse',usaname=usaname)}}">Charity Response</a></li>
-                                                <li><a href="{{url_for('item_list',usaname=usaname)}}">Item Status</a></li>
-                                                <li><a href="{{url_for('user_transactiondetails',usaname=usaname)}}">Transaction Details</a></li>
+                                                <li><a href="{{url_for('userhome1')}}">Home</a></li>
+                                                <li><a href="{{url_for('viewcharities')}}">View Charities</a></li>
+                                                <li><a href="{{url_for('charityresponse')}}">Charity Response</a></li>
+                                                <li><a href="{{url_for('user_transactiondetails')}}">Transaction Details</a></li>
                                                 <li><a href="{{url_for('userlogout')}}">Logout</a></li>
                                             </ul>
                                         </nav>
@@ -77,7 +75,7 @@
                 <div class="col-xl-5 col-lg-6 col-md-9 col-sm-10">
                     <div class="section-tittle text-center mb-90">
 
-                        <h2>Welcome to Charity Application <br>{{ usaname }}</h2>
+                        <h2>Welcome to Charity Application <br></h2>
 
                     </div>
                 </div>

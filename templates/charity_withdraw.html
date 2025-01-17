@@ -1,0 +1,132 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> Charity | Teamplate</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/slicknav.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/flaticon.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/progressbar_barfiller.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/gijgo.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/animate.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/animated-headline.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/magnific-popup.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/themify-icons.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/slick.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/nice-select.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/style.css')}}">
+</head>
+
+<body>
+
+    <header>
+        <!-- Header Start -->
+        <div class="header-area">
+            <div class="main-header ">
+                <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <!-- Logo -->
+                            <div class="col-xl-2 col-lg-2">
+                                <div class="logo">
+                                    <img src="{{url_for('static',filename='assets/img/logo/logo.png')}}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-xl-10 col-lg-10">
+                                <div class="menu-wrapper  d-flex align-items-center justify-content-end">
+                                    <!-- Main-menu -->
+                                    <div class="main-menu d-none d-lg-block">
+                                        <nav>
+                                            <ul id="navigation">
+                                                <li><a href="{{url_for('charityhome',chaname=chaname)}}">Home</a></li>
+                                                <li><a href="{{url_for('charity_profile',chaname=chaname)}}">Profile</a>
+                                                </li>
+                                                <li><a href="{{url_for('charity_post_upload',chaname=chaname)}}">Event Upload</a></li>
+                                                <li><a href="{{url_for('charity_member',chaname=chaname)}}">Charity
+                                                        Members</a></li>
+                                                <li><a href="{{url_for('donationrequest',chaname=chaname)}}">Requests</a></li>
+                                                <li><a href="{{url_for('charity_withdraw',chaname=chaname)}}">Withdraw
+                                                        Transaction</a></li>
+                                                <li><a href="{{url_for('singledonations',chaname=chaname)}}">TransactionS
+                                                        Details</a></li>
+                                                <li><a href="{{url_for('charitylogout')}}">Logout</a></li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Mobile Menu -->
+                            <div class="col-12">
+                                <div class="mobile_menu d-block d-lg-none"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+    <!-- header end -->
+    <main>
+        <div class="container">
+            <center>
+                <div class="section-tittle text-center mb-80">
+                    <h2>Charity withdraw </h2>
+                </div>
+                {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                <ul class=flashes>
+                    {% for category ,message in messages %}
+                    <li class="{{category}}">{{message}}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                {% endwith %}
+
+                <div class="col-lg-8">
+                    <form class="form-contact contact_form" enctype="multipart/form-data"
+                        action="{{url_for('withdraw',chaname=chaname)}}" method="post" id="contactForm"
+                        novalidate="novalidate">
+                        <div class="row">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="charity_name" style="text-align:center;"
+                                    value="{{ chaname }}" readonly />
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="event_name" style="text-align:center;"
+                                    placeholder="Enter Event Name">
+                            </div>
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control" name="event_description"
+                                    style="text-align:center;" placeholder="Enter Event Description">
+                            </div>
+                            <div class="input-group mb-3">
+                                <input type="number" class="form-control" name="ammount" style="text-align:center;"
+                                    placeholder="Enter the Ammount">
+                            </div>
+                            <div class="mb-3">
+                                <br>
+                            </div>
+                            </div>
+                            <div class="form-group mt-3">
+                                <button type="submit" class="btn btn-primary">submit</button>
+                            </div>
+                    </form>
+                </div>
+            </center>
+        </div>
+    </main>
+</body>
+
+</html>

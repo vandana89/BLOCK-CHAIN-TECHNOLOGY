@@ -26,7 +26,95 @@
 	<link rel="stylesheet" href="{{url_for('static',filename='assets/css/style.css')}}">
 </head>
 <body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
 
+        .container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            padding: 20px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 300px;
+            text-align: center;
+        }
+
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+
+        .card-content {
+            padding: 20px;
+        }
+
+        .progress {
+            background: #ff7f3f;
+            color: #fff;
+            display: inline-block;
+            padding: 5px 15px;
+            border-radius: 50%;
+            font-weight: bold;
+            margin: -25px 0 10px;
+        }
+
+        .title {
+            font-size: 1.2em;
+            font-weight: bold;
+            margin: 10px 0;
+        }
+
+        .stats {
+            color: #666;
+            margin: 10px 0;
+        }
+
+        .description {
+            font-size: 0.9em;
+            color: #888;
+            margin: 10px 0 20px;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .donate-btn {
+            background: #ff7f3f;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            font-weight: bold;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .donate-btn:hover {
+            background: #e0672e;
+        }
+
+        .donators {
+            color: #ff7f3f;
+            font-size: 0.9em;
+            font-weight: bold;
+        }
+    </style>
     <header>
         <!-- Header Start -->
         <div class="header-area">
@@ -47,13 +135,8 @@
                                     <div class="main-menu d-none d-lg-block">
                                         <nav>
                                             <ul id="navigation">
-                                                <li><a href="{{url_for('userhome',usaname=usaname)}}">Home</a></li>
-                                                <li><a href="{{url_for('userprofile',usaname=usaname)}}">Profile</a></li>
-                                                <li><a href="{{url_for('viewcharities',usaname=usaname)}}">View Charities</a></li>
-                                                <li><a href="{{url_for('charityresponse',usaname=usaname)}}">Charity Response</a></li>
-                                                <li><a href="{{url_for('item_list',usaname=usaname)}}">Item Status</a></li>
-                                                <li><a href="{{url_for('user_transactiondetails',usaname=usaname)}}">Transaction Details</a></li>
-                                                <li><a href="{{url_for('userlogout')}}">Logout</a></li>
+                                                <li><a href="{{url_for('address',usaname=usaname,v=v)}}">Contact</a></li>
+                                                <li><a href="{{url_for('userhome',usaname=usaname)}}">Go Back</a></li>
                                             </ul>
                                         </nav>
                                     </div>
@@ -68,30 +151,45 @@
     </header>
     <!-- header end -->
     <main>
-
-
-    <section class="home-blog-area section-padding30" style="padding-top: 240px;padding-bottom: 0px;">
-        <div class="container">
-            <!-- Section Tittle -->
-            <div class="row justify-content-center">
-                <div class="col-xl-5 col-lg-6 col-md-9 col-sm-10">
-                    <div class="section-tittle text-center mb-90">
-
-                        <h2>Welcome to Charity Application <br>{{ usaname }}</h2>
-
-                    </div>
-                </div>
+        <center>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>
+                    {% for category ,message in messages %}
+                    <div class="category">{{ message }}</div>
+                    {% endfor %}
+                </strong>
+                <!--button type="button" class="btn-close btn-danger" data-bs-dismiss="alert" aria-label="Close"></button-->
             </div>
-            <div class="row">
-                <div class="col-xl-6 col-lg-6 col-md-6">
-                    <div class="home-blog-single mb-30">
-
+            {% endif %}
+            {% endwith %}
+    </center>
+        <div class="container col-lg-16">
+            <!-- Section Tittle -->
+             
+            <div class="section-tittle text-center mb-80">
+                <h2>Charity Event</h2>
+            </div>
+        <br>
+            <div class="container">
+                {% for i in rows %}
+                <div class="card">
+                    <img src="{{url_for('static',filename='uploads/' ~ i[4])}}" alt="{{ i[2] }}">
+                    <div class="card-content">
+                        <div class="title">{{ i[2] }}</div>
+                        <p class="description">{{ i[3] }}</p>
+                        <center>
+                        <div class="align-middle">
+                            <a href="{{url_for('singleevent',usaname=usaname,v=v,c=i[0])}}" class="btn btn-primary;">DONATE NOW</a>
+                        </div>
+                        </center>
                     </div>
                 </div>
 
+                {% endfor %}
             </div>
         </div>
-    </section>
     <!-- Blog Area End -->
     <!--? Count Down Start -->
     <div class="count-down-area pt-25 section-bg" data-background="assets/img/gallery/section_bg02.png">

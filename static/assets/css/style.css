@@ -2942,11 +2942,11 @@ hr {
   /* line 913, C:/Users/HP/Desktop/jun-2020/277.Charity _Non-profit/assets/scss/_common.scss */
   .section-tittle {
     margin-bottom: 50px;
-    text-align: left !important;
+    text-align: center;
   }
 }
 
-@media only screen and (min-width: 576px) and (max-width: 767px) {
+@media only screen {
   /* line 913, C:/Users/HP/Desktop/jun-2020/277.Charity _Non-profit/assets/scss/_common.scss */
   .section-tittle {
     margin-bottom: 50px;
@@ -2969,7 +2969,7 @@ hr {
   .section-tittle span {
     font-size: 14px;
     padding-left: 0px;
-    text-align: left;
+    text-align: center;
   }
 }
 
@@ -3000,7 +3000,7 @@ hr {
 @media (max-width: 575px) {
   /* line 936, C:/Users/HP/Desktop/jun-2020/277.Charity _Non-profit/assets/scss/_common.scss */
   .section-tittle h2 {
-    text-align: left;
+    text-align: center;
     font-size: 27px;
   }
 }

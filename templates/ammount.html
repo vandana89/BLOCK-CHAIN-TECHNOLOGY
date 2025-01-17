@@ -1,0 +1,127 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> Charity | Teamplate</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/owl.carousel.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/slicknav.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/flaticon.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/progressbar_barfiller.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/gijgo.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/animate.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/animated-headline.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/magnific-popup.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/fontawesome-all.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/themify-icons.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/slick.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/nice-select.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/style.css')}}">
+</head>
+
+<body>
+
+    <header>
+        <!-- Header Start -->
+        <div class="header-area">
+            <div class="main-header ">
+
+                <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <!-- Logo -->
+                            <div class="col-xl-2 col-lg-2">
+                                <div class="logo">
+                                    <img src="{{url_for('static',filename='assets/img/logo/logo.png')}}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-xl-10 col-lg-10">
+                                <div class="menu-wrapper  d-flex align-items-center justify-content-end">
+                                    <!-- Main-menu -->
+                                    <div class="main-menu d-none d-lg-block">
+                                        <nav>
+                                            <ul id="navigation">
+                                                <li><a href="{{url_for('charityresponse',usaname=usaname)}}">Go Back</a></li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+    <!-- header end -->
+    <main>
+
+
+        <section class="service-area section-padding30" style="padding-top: 10px;padding-bottom:10 px;padding-bottom: 120px;">
+            <div class="container">
+                <!-- Section Tittle -->
+                        <div class="section-tittle text-center mb-90">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col">
+                                        <h2>Donate ammonut</h2>
+                                        <br>
+                                        <br>
+                                        <div class="container col-lg-5 justify-content-center">
+                                                <form class="form-contact section-tittle contact_form justify-content-center"
+                                                    action="{{url_for('payment',usaname=usaname,v=v)}}" method="post" id="contactForm"
+                                                    novalidate="novalidate">
+                                                    <div class="input-group mb-3">
+                                                        <input type="number" class="form-control" name="amount"
+                                                            style="text-align:center;" placeholder="Enter Amount">
+                                                    </div>
+                                                    <div class="form-group mt-3">
+                                                        <button type="submit" class="btn btn-primary">Donate</button>
+                                                    </div>
+                                                </form>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xl-6 col-lg-6 col-md-6">
+                            <div class="home-blog-single mb-30">
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+        </section>
+        <!-- Blog Area End -->
+        <!--? Count Down Start -->
+        <div class="count-down-area pt-25 section-bg" data-background="assets/img/gallery/section_bg02.png">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-lg-12 col-md-12">
+                        <div class="count-down-wrapper">
+                            <div class="row justify-content-between">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Count Down End -->
+    </main>
+
+</body>
+
+</html>

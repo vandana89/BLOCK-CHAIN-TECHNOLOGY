@@ -37,7 +37,7 @@
                             <!-- Logo -->
                             <div class="col-xl-2 col-lg-2">
                                 <div class="logo">
-                                    <img src="{{url_for('static',filename='assets/img/logo/logo.png')}}" alt="">
+                                   <img src="{{url_for('static',filename='assets/img/logo/logo.png')}}" alt="">
                                 </div>
                             </div>
                             <div class="col-xl-10 col-lg-10">
@@ -46,8 +46,12 @@
                                     <div class="main-menu d-none d-lg-block">
                                         <nav>
                                             <ul id="navigation">
-                                                <li><a href="{{url_for('index')}}">Home</a></li>
-                                                 <li><a href="{{url_for('charityregistration')}}">Registration</a></li>
+                                                <li><a href="{{url_for('viewallcharities')}}">View Charities</a></li>
+                                                <li><a href="{{url_for('viewallusers')}}">View Users</a></li>
+                                                <li><a href="{{url_for('alldonations')}}">View Donations</a></li>
+                                                <li><a href="{{url_for('admin_bankdetails')}}">Bankdetails</a></li>
+                                                <li><a href="{{url_for('admin_transactiodetails')}}">Transaction  Details</a></li>
+                                                <li><a href="{{url_for('adminlogout')}}">Logout </a></li>
                                             </ul>
                                         </nav>
                                     </div>
@@ -67,33 +71,30 @@
                 <center>
                     {% with messages = get_flashed_messages(with_categories=true) %}
                     {% if messages %}
-                    <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                        <strong>
-                            {% for category ,message in messages %}
-                            <div class="category">{{ message }}</div>
-                            {% endfor %}
-                        </strong>
-                        <button type="button" class="btn-close btn-danger" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
+                    <ul class=flashes>
+                    {% for category ,message in messages %}
+                        <li class="{{category}}">{{message}}</li>
+                    {% endfor %}
+                    </ul>
                     {% endif %}
                     {% endwith %}
 
                     <div class="col-12">
-                        <h2 class="contact-title">Charity Login . . . .</h2>
+                        <h2 class="contact-title">Charity Accout Page . . . . !</h2>
                     </div>
                     <div class="col-lg-8">
-                        <form class="form-contact contact_form" action="{{url_for('charitylog')}}" method="post" id="contactForm" novalidate="novalidate">
+                        <form class="form-contact contact_form" action="{{url_for('admin_charitybanking',c=c)}}" method="post" id="contactForm" novalidate="novalidate">
                             <div class="row">
                                 <div class="input-group mb-3">
-                                    <input type="email" class="form-control" name="charity_mailid" style="text-align:center;" placeholder="Enter Charity Mailid" >
+                                    <input type="number" class="form-control" name="accountnumber" style="text-align:center;" placeholder="Enter Charity Account Number" >
                                 </div>
 
                                <div class="input-group mb-3">
-                                   <input type="password" class="form-control" name="charity_password" style="text-align:center;"  placeholder="Enter Your Password">
+                                   <input type="text" class="form-control" name="accountIFSCcode" style="text-align:center;"  placeholder="Enter Bank IFSC Code">
                                </div>
                             </div>
                             <div class="form-group mt-3">
-                                <button type="submit" class="btn btn-primary">Login</button>
+                                <button type="submit" class="btn btn-primary">Send</button>
                             </div>
                         </form>
                     </div>

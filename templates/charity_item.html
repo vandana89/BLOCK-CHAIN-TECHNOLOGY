@@ -1,0 +1,197 @@
+<!doctype html>
+<html class="no-js" lang="zxx">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title> Charity | Teamplate</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="manifest" href="site.webmanifest">
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
+
+	<!-- CSS here -->
+	<link rel="stylesheet" href="{{url_for('static',filename='assets/css/bootstrap.min.css')}}">
+	<link rel="stylesheet" href="{{url_for('static',filename='assets/css/owl.carousel.min.css')}}">
+	<link rel="stylesheet" href="{{url_for('static',filename='assets/css/slicknav.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/flaticon.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/progressbar_barfiller.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/gijgo.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/animate.min.css')}}">
+    <link rel="stylesheet" href="{{url_for('static',filename='assets/css/animated-headline.css')}}">
+	<link rel="stylesheet" href="{{url_for('static',filename='assets/css/magnific-popup.css')}}">
+	<link rel="stylesheet" href="{{url_for('static',filename='assets/css/fontawesome-all.min.css')}}">
+	<link rel="stylesheet" href="{{url_for('static',filename='assets/css/themify-icons.css')}}">
+	<link rel="stylesheet" href="{{url_for('static',filename='assets/css/slick.css')}}">
+	<link rel="stylesheet" href="{{url_for('static',filename='assets/css/nice-select.css')}}">
+	<link rel="stylesheet" href="{{url_for('static',filename='assets/css/style.css')}}">
+</head>
+<body>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+   margin-left: auto;
+  margin-right: auto;
+}
+table.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+
+
+</style>
+    <style>
+        .block {
+            background-color: #dfffe0;
+            padding: 20px;
+            margin: 65px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+    <header>
+        <!-- Header Start -->
+        <div class="header-area">
+            <div class="main-header ">
+
+                <div class="header-bottom  header-sticky">
+                    <div class="container-fluid">
+                        <div class="row align-items-center">
+                            <!-- Logo -->
+                            <div class="col-xl-2 col-lg-2">
+                                <div class="logo">
+                                    <img src="{{url_for('static',filename='assets/img/logo/logo.png')}}" alt="">
+                                </div>
+                            </div>
+                            <div class="col-xl-10 col-lg-10">
+                                <div class="menu-wrapper  d-flex align-items-center justify-content-end">
+                                    <!-- Main-menu -->
+                                    <div class="main-menu d-none d-lg-block">
+                                        <nav>
+                                            <ul id="navigation">
+                                                <li><a href="{{url_for('charityhome',chaname=chaname)}}">Home</a></li>
+                                                <li><a href="{{url_for('charity_profile',chaname=chaname)}}">Profile</a></li>
+                                                <li><a href="{{url_for('charity_post_upload',chaname=chaname)}}">Event Upload</a></li>
+                                                <li><a href="{{url_for('charity_member',chaname=chaname)}}">Charity Members</a></li>
+                                                <li><a href="{{url_for('charity_item',chaname=chaname)}}">Item list</a></li>
+                                                <li><a href="{{url_for('donationrequest',chaname=chaname)}}">Requests</a></li>
+                                                <li><a href="{{url_for('charity_withdraw',chaname=chaname)}}">Withdraw</a></li>
+                                                <li><a href="{{url_for('singledonations',chaname=chaname)}}">TransactionS Details</a></li>
+                                                <li><a href="{{url_for('charitylogout')}}">Logout</a></li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Header End -->
+    </header>
+    <!-- header end -->
+    <main>
+
+        <center>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert">
+                <strong>
+                    {% for category ,message in messages %}
+                    <div class="category">{{ message }}</div>
+                    {% endfor %}
+                </strong>
+                <!--button type="button" class="btn-close btn-danger" data-bs-dismiss="alert" aria-label="Close"></button-->
+            </div>
+            {% endif %}
+            {% endwith %}
+    </center>
+        <div class="container">
+                <div class="section-tittle text-center mb-80">
+                   <h2 style="margin-left: 100px;">Item List</h2>
+                </div>
+                <table style="width:100 px;margin-left:40px;">
+                    <tr>
+                        {% for i in cols %}
+                        <th style="text-align:center;">{{ i }}</th>
+                        {% endfor %}
+                        <th style="text-align:center;">Action</th>
+                    </tr>
+                    {% for i in rows %}
+                    <tr>
+                        {% for j in i %}
+                        <td style="text-align:center;">{{ j }}</td>
+                        {% endfor %}
+                        {% if i[8]=='pending' and i[1]==chaname %}
+                            <td><a href="{{url_for('itemstatus',chaname=chaname,v=i[0])}}" class="btn btn-primary;">Accept</a></td>
+                        {% endif %}
+                    </tr>
+                        {% endfor %}
+                </table>
+        </div>
+        <!--div class="container col-lg-16">
+            <div class="section-tittle text-center mb-80">
+                <h2>Item Request List</h2>
+            </div>
+            <div class="row row row-cols-1 row-cols-lg-3">
+                {% for i in rows %}
+                <div class="col-md-6">
+                    <div class="block">
+                        <div class="mb-3">
+                            <label for="charity-name" class="form-label">Charity Name:</label>
+                            <input type="text" class="form-control" id="charity-name" value="{{ i[0] }}" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="charity-name" class="form-label">Charity Email:</label>
+                            <input type="text" class="form-control" id="charity-name" value="{{ i[1] }}" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="charity-email" class="form-label">Member Name:</label>
+                            <input class="form-control" id="charity-email" value="{{ i[2] }}" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="charity-email" class="form-label">Member Email:</label>
+                            <input class="form-control" id="charity-email" value="{{ i[3] }}" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="charity-address" class="form-label">Member Address:</label>
+                            <input class="form-control" id="charity-address" value="{{ i[4] }}" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="user-email" class="form-label">Member Contact:</label>
+                            <input class="form-control" id="user-email" value="{{ i[5] }}" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Status" class="form-label">Item :</label>
+                            <input class="form-control" id="Status" value="{{ i[6] }}" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="Status" class="form-label">Status:</label>
+                            <input class="form-control" id="Status" value="{{ i[7] }}" readonly>
+                        </div>
+                        
+                        </div>
+                        {% if i[7]=='pending' and i[1]==chaname %}
+                            <a href="{{url_for('itemassign',chaname=chaname,v=i[0])}}" class="btn btn-primary;">Accept</a>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div-->
+    </main>
+
+    </body>
+</html>

@@ -8,7 +8,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="manifest" href="site.webmanifest">
     <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.ico">
-
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 	<!-- CSS here -->
 	<link rel="stylesheet" href="{{url_for('static',filename='assets/css/bootstrap.min.css')}}">
 	<link rel="stylesheet" href="{{url_for('static',filename='assets/css/owl.carousel.min.css')}}">
@@ -26,7 +27,7 @@
 	<link rel="stylesheet" href="{{url_for('static',filename='assets/css/style.css')}}">
 </head>
 <body>
-<style>
+<!--style>
 table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -50,6 +51,16 @@ tr:nth-child(even) {
 }
 
 
+</style-->
+
+<style>
+    .block {
+        background-color: #dfffe0;
+        padding: 20px;
+        margin: 10px;
+        border-radius: 10px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 </style>
 
     <header>
@@ -71,9 +82,9 @@ tr:nth-child(even) {
                                     <div class="main-menu d-none d-lg-block">
                                         <nav>
                                             <ul id="navigation">
-                                                <li><a href="{{url_for('donationrequest')}}">View Requests</a></li>
-                                                <li><a href="{{url_for('viewdonations')}}">View Donations</a></li>
-                                                <li><a href="{{url_for('charitylogout')}}">Logout</a></li>
+                                                <li><a href="{{url_for('donationrequest',chaname=chaname)}}">Donation Requests</a></li>
+                                                <li><a href="{{url_for('itemrequest',chaname=chaname)}}">Item Requests</a></li>
+                                                 <li><a href="{{url_for('charityhome',chaname=chaname)}}">Go Back</a></li>
                                             </ul>
                                         </nav>
                                     </div>
@@ -87,12 +98,10 @@ tr:nth-child(even) {
     </header>
     <main>
     <!-- Our Cases Start -->
-    <div class="our-cases-area section-padding30" style="padding-bottom: 370px;padding-top: 50px;">
+    <!--div class="our-cases-area section-padding30" style="padding-bottom: 370px;padding-top: 50px;">
         <div class="container" style="padding-left: 0px;margin-left: 0px;margin-right: 0px;padding-right: 0px;">
-
-                    <!-- Section Tittle -->
                 <div class="section-tittle text-center mb-80">
-                   <h2 style="margin-left: 100px;">Charity Information</h2>
+                   <h2 style="margin-left: 100px;">User Requests List</h2>
                 </div>
                 <table style="width:100 px;margin-left:40px;">
                     <tr>
@@ -106,10 +115,62 @@ tr:nth-child(even) {
                         {% for j in i %}
                         <td style="text-align:center;">{{ j }}</td>
                         {% endfor %}
-                        <td style="text-align:center;"><a href="{{url_for('acceptrequest',c=i[0])}}" class="btn btn-primary;">Accept</a></td>
+
                     </tr>
                         {% endfor %}
                 </table>
+        </div>
+    </div-->
+    <div class="container col-lg-16">
+        <div class="section-tittle text-center mb-80">
+            <h2>User Request List</h2>
+        </div>
+        <div class="row row row-cols-1 row-cols-lg-3">
+            <!-- Block 1 -->
+             <!--donation table-->
+            {% for i in rows %}
+            <div class="col-md-6">
+                <div class="block">
+                    <div class="mb-3">
+                        <label for="block1-number" class="form-label">Block:</label>
+                        <input type="text" class="form-control" id="block1-number" value="{{ i[0] }}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="charity-name" class="form-label">charity-name:</label>
+                        <input type="text" class="form-control" id="charity-name" value="{{ i[1] }}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="charity-email" class="form-label">charity-email:</label>
+                        <input class="form-control" id="charity-email" value="{{ i[2] }}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="charity-address" class="form-label">charity-address:</label>
+                        <input class="form-control" id="charity-address" value="{{ i[3] }}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="user-email" class="form-label">user-email:</label>
+                        <input class="form-control" id="user-email" value="{{ i[4] }}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="Status" class="form-label">Status:</label>
+                        <input class="form-control" id="Status" value="{{ i[6] }}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="block1-prev" class="form-label">Prev:</label>
+                        <input type="text" class="form-control" id="block1-prev"
+                            value="{{ i[7] }}" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="block1-hash" class="form-label">Hash:</label>
+                        <input type="text" class="form-control" id="block1-hash"
+                            value="{{ i[8] }}" readonly>
+                    </div>
+                    {% if i[6]=='pending' and i[1]==chaname %}
+                        <a href="{{url_for('acceptrequest',c=i[0],chaname=i[1])}}" class="btn btn-primary;">Accept</a>
+                    {% endif %}
+                </div>
+            </div>
+            {% endfor %}
         </div>
     </div>
     </main>
