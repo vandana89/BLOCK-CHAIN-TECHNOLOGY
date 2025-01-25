@@ -1,0 +1,19 @@
+{
+  "name": "Codespace with MySQL",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "features": {
+    "mysql": {
+      "version": "8"
+    }
+  },
+  "postCreateCommand": "sudo service mysql start && mysql --version",
+  "forwardPorts": [3306],
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-azuretools.vscode-docker",
+        "ms-python.python"
+      ]
+    }
+  }
+}
